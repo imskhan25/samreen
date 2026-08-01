@@ -42,36 +42,6 @@
             padding-bottom: 40px;
         }
 
-        /* Floating Music Button */
-        .music-btn {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            z-index: 100;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-            transition: transform 0.2s;
-        }
-
-        .music-btn:active {
-            transform: scale(0.95);
-        }
-
-        .music-btn svg {
-            width: 22px;
-            height: 22px;
-            fill: #ff9ebb;
-        }
-
         /* Header Section */
         .header {
             text-align: center;
@@ -120,13 +90,13 @@
             color: var(--text-sub);
         }
 
-        /* Counter Section */
+        /* Counter Cards */
         .counter-card {
             background: var(--card-bg);
             border: 1px solid var(--card-border);
             border-radius: 20px;
             padding: 20px;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
             backdrop-filter: blur(10px);
         }
 
@@ -149,6 +119,12 @@
             gap: 12px;
         }
 
+        .timer-grid-4 {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+
         .time-box {
             background: var(--box-bg);
             border: 1px solid rgba(255, 255, 255, 0.05);
@@ -158,14 +134,14 @@
         }
 
         .time-box .num {
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             font-weight: 600;
             color: #fff;
             display: block;
         }
 
         .time-box .label {
-            font-size: 0.68rem;
+            font-size: 0.65rem;
             color: var(--text-sub);
             margin-top: 2px;
             display: block;
@@ -307,7 +283,6 @@
             border-radius: 12px;
             border-left: 3px solid var(--accent-pink);
             margin-top: 10px;
-            /* Scrollbar styling for a sleek dark look */
             scrollbar-width: thin;
             scrollbar-color: var(--accent-pink) rgba(0, 0, 0, 0.2);
         }
@@ -343,31 +318,19 @@
 </head>
 <body>
 
-    <!-- Hidden Audio Player -->
-    <audio id="bgMusic" loop>
-        <source src="your-song.mp3" type="audio/mpeg">
-    </audio>
-
-    <!-- Floating Music Button -->
-    <button class="music-btn" onclick="toggleMusic()" title="Play / Pause Song">
-        <svg viewBox="0 0 24 24">
-            <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>
-        </svg>
-    </button>
-
     <div class="wrapper">
         <!-- Header -->
         <div class="header">
             <div class="sub-tag">✦ Romantic Surprise ✦</div>
             <h1 class="main-title">I Love You</h1>
             <div class="name">Samreen</div>
-            
+
             <div class="date-badge">
                 📅 <span id="relationship-date-text">February 13, 2025</span>
             </div>
         </div>
 
-        <!-- Together Counter -->
+        <!-- 1. Relationship Counter -->
         <div class="counter-card">
             <div class="counter-title">♥ Together ♥</div>
             <div class="timer-grid">
@@ -398,7 +361,30 @@
             </div>
         </div>
 
-        <!-- Love Message Section -->
+        <!-- 2. Birthday Countdown (August 31st) -->
+        <div class="counter-card">
+            <div class="counter-title">🎂 Countdown to Her Birthday (Aug 31) 🎂</div>
+            <div class="timer-grid-4">
+                <div class="time-box">
+                    <span class="num" id="bday-days">00</span>
+                    <span class="label">Days</span>
+                </div>
+                <div class="time-box">
+                    <span class="num" id="bday-hours">00</span>
+                    <span class="label">Hours</span>
+                </div>
+                <div class="time-box">
+                    <span class="num" id="bday-mins">00</span>
+                    <span class="label">Mins</span>
+                </div>
+                <div class="time-box">
+                    <span class="num" id="bday-secs">00</span>
+                    <span class="label">Secs</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3. Love Message Section -->
         <div class="message-card">
             <div class="msg-header">
                 <div class="heart-icon-bg">♥</div>
@@ -419,14 +405,12 @@
                 <button class="unlock-btn" onclick="unlockLetter()">Open Love Letter ✉️</button>
             </div>
 
-            <!-- Revealed Content (Animated Opening & Scrollable) -->
+            <!-- Revealed Content -->
             <div id="revealedSection">
-                <!-- Love Sticker -->
                 <div class="sticker-container">
                     🧸💖✨
                 </div>
 
-                <!-- Scrollable Unlocked Letter Text -->
                 <div class="letter-content-scroll">
                     <div class="salutation">My Love,</div>
                     <div class="letter-text">Today is National Girlfriend Day, and even with all the miles stretching between us, you feel closer to me than anything else in this world.
@@ -445,19 +429,9 @@ Thank you for choosing me, for listening to me, and for being the best part of m
     </div>
 
     <script>
+        // Timers Logic
         const startDate = new Date("2025-02-13T00:00:00"); 
 
-        // Toggle Music
-        const audio = document.getElementById('bgMusic');
-        function toggleMusic() {
-            if (audio.paused) {
-                audio.play();
-            } else {
-                audio.pause();
-            }
-        }
-
-        // Real-Time Counter Logic
         function updateCounter() {
             const now = new Date();
             
@@ -486,18 +460,44 @@ Thank you for choosing me, for listening to me, and for being the best part of m
             document.getElementById('seconds').innerText = String(seconds).padStart(2, '0');
         }
 
-        setInterval(updateCounter, 1000);
-        updateCounter();
+        function updateBirthdayCountdown() {
+            const now = new Date();
+            let currentYear = now.getFullYear();
+            
+            let nextBirthday = new Date(currentYear, 7, 31, 0, 0, 0);
 
-        // Direct Reveal Logic
+            if (now > nextBirthday) {
+                nextBirthday = new Date(currentYear + 1, 7, 31, 0, 0, 0);
+            }
+
+            const diff = nextBirthday - now;
+
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+            const minutes = Math.floor((diff / (1000 * 60)) % 60);
+            const seconds = Math.floor((diff / 1000) % 60);
+
+            document.getElementById('bday-days').innerText = String(days).padStart(2, '0');
+            document.getElementById('bday-hours').innerText = String(hours).padStart(2, '0');
+            document.getElementById('bday-mins').innerText = String(minutes).padStart(2, '0');
+            document.getElementById('bday-secs').innerText = String(seconds).padStart(2, '0');
+        }
+
+        setInterval(() => {
+            updateCounter();
+            updateBirthdayCountdown();
+        }, 1000);
+
+        updateCounter();
+        updateBirthdayCountdown();
+
+        // Unlock Logic
         function unlockLetter() {
             const lockSec = document.getElementById('lockSection');
             const revealSec = document.getElementById('revealedSection');
 
-            // Fade out trigger box
             lockSec.classList.add('fade-out');
 
-            // Expand letter smoothly
             setTimeout(() => {
                 lockSec.style.display = 'none';
                 revealSec.classList.add('open');
