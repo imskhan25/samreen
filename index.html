@@ -91,7 +91,7 @@
             color: var(--text-sub);
         }
 
-        /* Get Well Soon Banner Card */
+        /* Get Well Soon Card */
         .get-well-card {
             background: linear-gradient(135deg, rgba(230, 57, 70, 0.25) 0%, rgba(214, 40, 40, 0.1) 100%);
             border: 1px solid rgba(255, 77, 109, 0.35);
@@ -155,19 +155,39 @@
         }
 
         #gwContent.open {
-            max-height: 500px;
+            max-height: 600px;
             opacity: 1;
             margin-top: 15px;
         }
 
-        .gw-message-box {
+        /* Scrollable Container for Original Get Well Message */
+        .gw-message-scroll {
+            max-height: 220px;
+            overflow-y: auto;
             background: rgba(0, 0, 0, 0.3);
             border-left: 3px solid var(--accent-rose);
-            padding: 15px;
-            border-radius: 10px;
+            padding: 16px;
+            border-radius: 12px;
             font-size: 0.88rem;
-            line-height: 1.6;
+            line-height: 1.7;
             color: #f3e8ee;
+            white-space: pre-line;
+            scrollbar-width: thin;
+            scrollbar-color: var(--accent-rose) rgba(0, 0, 0, 0.2);
+        }
+
+        .gw-message-scroll::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .gw-message-scroll::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+        }
+
+        .gw-message-scroll::-webkit-scrollbar-thumb {
+            background: var(--accent-rose);
+            border-radius: 10px;
         }
 
         .hug-btn {
@@ -438,21 +458,27 @@
             </div>
         </div>
 
-        <!-- NEW INTEGRATED SECTION: Get Well Soon Card -->
+        <!-- INTEGRATED SECTION: Get Well Soon Card with Scrollable Original Message -->
         <div class="get-well-card">
             <div class="rose-bouquet">🌹💐🌹</div>
             <h2 class="get-well-title">Get Well Soon, My Love</h2>
-            <p class="get-well-sub">Sending a bouquet of red roses to wrap you in warmth and love</p>
+            <p class="get-well-sub">Sending a bouquet of red roses and all my warmth your way</p>
             <button class="toggle-gw-btn" onclick="toggleGetWell()">Open Get Well Card 💌</button>
             
             <div id="gwContent">
-                <div class="gw-message-box">
-                    <p>My Dearest Samreen (Eya),</p><br>
-                    <p>It breaks my heart knowing you aren't feeling well today. Days just aren't as bright without your sweet smile and joyful presence.</p><br>
-                    <p>Please take time to rest up, drink plenty of fluids, and recover quickly. I'm sending you all my warmth across the distance.</p>
+                <div class="gw-message-scroll">
+My dearest Samreen (Eya),
+
+It breaks my heart seeing you not feeling well today. Days just aren't as bright without your smile and warm energy illuminating everything around.
+
+I’m sending you this bouquet of virtual red roses to remind you how deeply loved and cherished you are. Please rest up, drink plenty of fluids, and take extra good care of yourself today.
+
+If you need anything at all—whether it's medicine, your favorite soup, or just someone to hold your hand—I'm right here for you. Wishing you the fastest and sweetest recovery!
+
+Forever yours, ❤️
                 </div>
-                <button class="hug-btn" onclick="sendVirtualCare()">Click to Send Virtual Medicine & Hugs 🧸</button>
-                <div id="hugAlert">Warm hugs, kisses & extra love delivered to Eya! 💖✨</div>
+                <button class="hug-btn" onclick="sendVirtualCare()">Click for Extra Hugs & Kisses 🤗</button>
+                <div id="hugAlert">Giant warm hugs & extra kisses sent to Eya! 💖🌹</div>
             </div>
         </div>
 
