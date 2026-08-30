@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy 24th Birthday Samreen!</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-gradient: radial-gradient(circle, #2d0b36 0%, #0d0214 100%);
+            --pink-accent: #f7a8ca;
+            --rose-accent: #ff4d6d;
+            --gold-accent: #ffd166;
+            --page-bg: #fffcf7;
+            --text-dark: #2b1e2a;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--bg-gradient);
+            color: #ffffff;
+            min-height: 100vh;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px 10px;
+        }
+
+        #heartCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .header-tag {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: var(--pink-accent);
+            margin-bottom: 4px;
+        }
+
+        .main-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: clamp(2.4rem, 6vw, 3.5rem);
+            background: linear-gradient(135deg, #f7a8ca, #ff4d6d, #ffd166);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: pulseGlow 2.5s infinite alternate ease-in-out;
+            text-align: center;
+        }
+
+        .birth-date {
+            font-size: 0.85rem;
+            color: var(--gold-accent);
+            margin-bottom: 12px;
+        }
+
+        .cake-container {
+            position: relative;
+            width: 65px;
+            height: 50px;
+            margin-bottom: 15px;
+        }
+
+        .cake-body {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 35px;
+            background: linear-gradient(135deg, #ff4d6d, #c9184a);
+            border-radius: 8px 8px 4px 4px;
+            box-shadow: 0 4px 15px rgba(255, 77, 109, 0.4);
+        }
+
+        .cake-frosting {
+            position: absolute;
+            top: 15px;
+            width: 100%;
+            height: 12px;
+            background: #fff;
+            border-radius: 8px 8px 0 0;
+        }
+
+        .candle {
+            position: absolute;
+            top: 4px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 6px;
+            height: 14px;
+            background: linear-gradient(to bottom, #ffd166, #f7a8ca);
+            border-radius: 3px;
+        }
+
+        .flame {
+            position: absolute;
+            top: -9px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 8px;
+            height: 11px;
+            background: #ff9e00;
+            border-radius: 50% 50% 20% 20%;
+            box-shadow: 0 0 10px #ff9e00, 0 0 20px #ff0000;
+            animation: flicker 0.1s infinite alternate;
+        }
+
+        .book-container {
+            position: relative;
+            width: min(340px, 88vw);
+            height: clamp(430px, 64vh, 490px);
+            perspective: 1200px;
+            margin-bottom: 20px;
+        }
+
+        .book-page {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background: var(--page-bg);
+            color: var(--text-dark);
+            border-radius: 12px 18px 18px 12px;
+            padding: 24px 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transform-origin: left center;
+            transform-style: preserve-3d;
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+            transition: transform 0.8s cubic-bezier(0.645, 0.045, 0.355, 1);
+        }
+
+        .page-body {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            justify-content: center;
+        }
+
+        .cover-page {
+            background: linear-gradient(135deg, #2e0938, #5c1356);
+            color: #ffffff;
+            border: 2px solid rgba(247, 168, 202, 0.4);
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .cover-icon {
+            font-size: 3.5rem;
+            margin-bottom: 12px;
+            animation: pulseGlow 2s infinite alternate;
+        }
+
+        .page-header {
+            font-family: 'Dancing Script', cursive;
+            font-size: clamp(1.6rem, 5vw, 2.1rem);
+            color: #c9184a;
+            margin-bottom: 12px;
+        }
+
+        .page-content {
+            font-size: clamp(0.85rem, 2.8vw, 0.95rem);
+            line-height: 1.6;
+            color: #3d2b3a;
+            white-space: pre-line;
+        }
+
+        .page-num {
+            font-size: 0.72rem;
+            color: #a0889c;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .book-page.flipped {
+            transform: rotateY(-180deg);
+            pointer-events: none;
+        }
+
+        /* Final Page Sticker Styling */
+        .final-wrapper {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            gap: 8px;
+        }
+
+        .sticker-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 5px;
+        }
+
+        .sticker {
+            display: inline-block;
+            font-size: clamp(2.5rem, 8vw, 3.2rem);
+            filter: drop-shadow(0 6px 12px rgba(0,0,0,0.15));
+            animation: floatSticker 3s infinite ease-in-out;
+        }
+
+        .sticker.heart { animation-delay: 0.3s; }
+        .sticker.hug { animation-delay: 0.6s; }
+
+        .controls {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, var(--rose-accent), #c9184a);
+            border: none;
+            color: white;
+            font-size: 0.88rem;
+            font-weight: 600;
+            padding: 11px 24px;
+            border-radius: 25px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(255, 77, 109, 0.4);
+            transition: transform 0.2s ease, background 0.3s ease;
+        }
+
+        .btn:active { transform: scale(0.95); }
+
+        @keyframes flicker {
+            0% { transform: translateX(-50%) scale(1); opacity: 0.9; }
+            100% { transform: translateX(-50%) scale(1.15); opacity: 1; }
+        }
+
+        @keyframes floatSticker {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-8px) scale(1.08); }
+        }
+
+        @keyframes pulseGlow {
+            0% { filter: drop-shadow(0 0 8px rgba(247, 168, 202, 0.3)); }
+            100% { filter: drop-shadow(0 0 20px rgba(255, 77, 109, 0.8)); }
+        }
+    </style>
+</head>
+<body>
+
+    <canvas id="heartCanvas"></canvas>
+
+    <div class="header-tag">✦ Birthday Special ✦</div>
+    <h1 class="main-title">Samreen (Eya)</h1>
+    <div class="birth-date">🎂 Born on 31st August 2002</div>
+
+    <div class="cake-container">
+        <div class="flame"></div>
+        <div class="candle"></div>
+        <div class="cake-frosting"></div>
+        <div class="cake-body"></div>
+    </div>
+
+    <div class="book-container">
+        <div class="book-page cover-page" id="page0" style="z-index: 8;">
+            <div class="cover-icon">👑✨</div>
+            <h2 style="font-family: 'Playfair Display', serif; font-size: 1.4rem; margin-bottom: 8px;">Samreen's Book of Wishes</h2>
+            <p style="font-size: 0.82rem; color: #f7a8ca; line-height: 1.5; padding: 0 10px;">Tap "Next" to open your 24th birthday card.</p>
+            <div class="page-num" style="color: #c4b2c1; margin-top: 15px;">Front Cover</div>
+        </div>
+
+        <div class="book-page" id="page1" style="z-index: 7;">
+            <div class="page-body">
+                <div class="page-header">Dearest Samreen,</div>
+                <div class="page-content">Happy Birthday to the most special person! 🎂
+
+Today is all about celebrating your presence, your wonderful heart, and all the happiness you bring into every day.</div>
+            </div>
+            <div class="page-num">Page 1</div>
+        </div>
+
+        <div class="book-page" id="page2" style="z-index: 6;">
+            <div class="page-body">
+                <div class="page-header">Radiant & Kind</div>
+                <div class="page-content">Your grace, kindness, and effortless charm illuminate everything around you.
+
+May your world always be filled with peace, laughter, and genuine comfort. ✨</div>
+            </div>
+            <div class="page-num">Page 2</div>
+        </div>
+
+        <div class="book-page" id="page3" style="z-index: 5;">
+            <div class="page-body">
+                <div class="page-header">Cherished Moments</div>
+                <div class="page-content">Every conversation, every quiet thought, and every moment shared with you is deeply special.
+
+Thank you for being the wonderful person that you are! 💖</div>
+            </div>
+            <div class="page-num">Page 3</div>
+        </div>
+
+        <div class="book-page" id="page4" style="z-index: 4;">
+            <div class="page-body">
+                <div class="page-header">Dreams & Victory</div>
+                <div class="page-content">May this year bring you closer to all your aspirations.
+
+May every goal you work toward turn into a grand victory, bringing endless success and joy into your life! 🌟</div>
+            </div>
+            <div class="page-num">Page 4</div>
+        </div>
+
+        <div class="book-page" id="page5" style="z-index: 3;">
+            <div class="page-body">
+                <div class="page-header">Shine Bright Always</div>
+                <div class="page-content">Never stop reaching for the stars. You are deserving of all the love, happiness, and peace in the world.
+
+Keep smiling and shining bright always! 🌸</div>
+            </div>
+            <div class="page-num">Page 5</div>
+        </div>
+
+        <div class="book-page" id="page6" style="z-index: 2;">
+            <div class="page-body">
+                <div class="page-header">Happy 24th Chapter! 🎉</div>
+                <div class="page-content">24 looks absolutely stunning on you, Samreen! 
+
+As you step into this beautiful new chapter of your life, I hope it brings you immense maturity, endless laughter, and the fulfillment of every wish you carry in your heart. You deserve the absolute best year ahead! ✨</div>
+            </div>
+            <div class="page-num">Page 6</div>
+        </div>
+
+        <div class="book-page" id="page7" style="z-index: 1;">
+            <div class="final-wrapper">
+                <div class="sticker-row">
+                    <span class="sticker heart">💖</span>
+                    <span class="sticker">🧸</span>
+                    <span class="sticker hug">🫂</span>
+                </div>
+                <div class="page-header" style="margin-bottom: 6px;">A Big Birthday Hug!</div>
+                <div class="page-content" style="text-align: center;">Sending you the warmest, biggest teddy bear hug and all my love on your 24th birthday!
+
+Always here for you, Jaan! ❤️</div>
+            </div>
+            <div class="page-num">Final Page</div>
+        </div>
+    </div>
+
+    <div class="controls">
+        <button class="btn" onclick="prevPage()">⏮ Previous</button>
+        <button class="btn" onclick="nextPage()">Next ⏭</button>
+    </div>
+
+    <script>
+        let currentPage = 0;
+        const totalPages = 8; // Cover + Pages 1 to 6 + Final Page
+
+        function nextPage() {
+            if (currentPage < totalPages - 1) {
+                document.getElementById(`page${currentPage}`).classList.add('flipped');
+                currentPage++;
+            }
+        }
+
+        function prevPage() {
+            if (currentPage > 0) {
+                currentPage--;
+                document.getElementById(`page${currentPage}`).classList.remove('flipped');
+            }
+        }
+
+        const canvas = document.getElementById('heartCanvas');
+        const ctx = canvas.getContext('2d');
+        let hearts = [];
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+
+        class HeartParticle {
+            constructor() { this.reset(); }
+            reset() {
+                this.x = Math.random() * canvas.width;
+                this.y = canvas.height + 20;
+                this.size = Math.random() * 12 + 6;
+                this.speedY = Math.random() * 1.5 + 0.5;
+                this.alpha = Math.random() * 0.6 + 0.3;
+            }
+            update() {
+                this.y -= this.speedY;
+                if (this.y < -20) this.reset();
+            }
+            draw() {
+                ctx.save();
+                ctx.globalAlpha = this.alpha;
+                ctx.fillStyle = '#ff4d6d';
+                ctx.beginPath();
+                ctx.moveTo(this.x, this.y);
+                ctx.bezierCurveTo(this.x - this.size / 2, this.y - this.size / 2, this.x - this.size, this.y + this.size / 3, this.x, this.y + this.size);
+                ctx.bezierCurveTo(this.x + this.size, this.y + this.size / 3, this.x + this.size / 2, this.y - this.size / 2, this.x, this.y);
+                ctx.fill();
+                ctx.restore();
+            }
+        }
+
+        function initHearts() {
+            resizeCanvas();
+            hearts = [];
+            for (let i = 0; i < 35; i++) hearts.push(new HeartParticle());
+        }
+
+        function animateHearts() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            hearts.forEach(h => { h.update(); h.draw(); });
+            requestAnimationFrame(animateHearts);
+        }
+
+        window.addEventListener('resize', resizeCanvas);
+        initHearts();
+        animateHearts();
+    </script>
+</body>
+</html>
