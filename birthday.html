@@ -195,7 +195,6 @@
             pointer-events: none;
         }
 
-        /* Final Page Sticker Styling */
         .final-wrapper {
             text-align: center;
             display: flex;
@@ -227,6 +226,7 @@
         .controls {
             display: flex;
             gap: 15px;
+            margin-bottom: 15px;
         }
 
         .btn {
@@ -243,6 +243,23 @@
         }
 
         .btn:active { transform: scale(0.95); }
+
+        .back-link {
+            color: var(--pink-accent);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            padding: 8px 18px;
+            border: 1px solid rgba(247, 168, 202, 0.3);
+            border-radius: 20px;
+            background: rgba(0, 0, 0, 0.2);
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+
+        .back-link:hover {
+            background: rgba(247, 168, 202, 0.15);
+            transform: translateY(-2px);
+        }
 
         @keyframes flicker {
             0% { transform: translateX(-50%) scale(1); opacity: 0.9; }
@@ -364,9 +381,12 @@ Always here for you, Jaan! ❤️</div>
         <button class="btn" onclick="nextPage()">Next ⏭</button>
     </div>
 
+    <!-- Back to Main Page Link -->
+    <a href="index.html" class="back-link">← Back to Main Surprise</a>
+
     <script>
         let currentPage = 0;
-        const totalPages = 8; // Cover + Pages 1 to 6 + Final Page
+        const totalPages = 8;
 
         function nextPage() {
             if (currentPage < totalPages - 1) {
