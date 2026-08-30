@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Romantic Surprise for Samreen</title>
-    <!-- Google Fonts -->
+    <title>Romantic Birthday Surprise for Samreen</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -91,19 +90,19 @@
             color: var(--text-sub);
         }
 
-        /* Get Well Soon Card */
-        .get-well-card {
-            background: linear-gradient(135deg, rgba(230, 57, 70, 0.25) 0%, rgba(214, 40, 40, 0.1) 100%);
-            border: 1px solid rgba(255, 77, 109, 0.35);
+        /* Birthday Celebration Card */
+        .bday-card {
+            background: linear-gradient(135deg, rgba(247, 168, 202, 0.25) 0%, rgba(216, 105, 151, 0.1) 100%);
+            border: 1px solid rgba(247, 168, 202, 0.35);
             border-radius: 20px;
             padding: 22px;
             margin-bottom: 20px;
             backdrop-filter: blur(10px);
             text-align: center;
-            box-shadow: 0 8px 25px rgba(230, 57, 70, 0.15);
+            box-shadow: 0 8px 25px rgba(247, 168, 202, 0.15);
         }
 
-        .rose-bouquet {
+        .flower-bouquet {
             font-size: 2.5rem;
             margin-bottom: 8px;
             animation: float 3s infinite ease-in-out;
@@ -114,38 +113,38 @@
             50% { transform: translateY(-5px); }
         }
 
-        .get-well-title {
+        .bday-card-title {
             font-family: 'Playfair Display', serif;
             font-size: 1.4rem;
             color: #ffb3c1;
             margin-bottom: 6px;
         }
 
-        .get-well-sub {
+        .bday-card-sub {
             font-size: 0.82rem;
             color: var(--text-sub);
             margin-bottom: 15px;
             line-height: 1.4;
         }
 
-        .toggle-gw-btn {
-            background: linear-gradient(135deg, #ff4d6d 0%, #c9184a 100%);
+        .toggle-bday-btn {
+            background: linear-gradient(135deg, #f7a8ca 0%, #d86997 100%);
             border: none;
-            color: #fff;
+            color: #17041f;
             font-weight: 600;
             padding: 10px 22px;
             border-radius: 25px;
             cursor: pointer;
             font-size: 0.85rem;
             transition: transform 0.2s, box-shadow 0.2s;
-            box-shadow: 0 4px 15px rgba(255, 77, 109, 0.3);
+            box-shadow: 0 4px 15px rgba(247, 168, 202, 0.3);
         }
 
-        .toggle-gw-btn:hover {
+        .toggle-bday-btn:hover {
             transform: scale(1.05);
         }
 
-        #gwContent {
+        #bdayContent {
             max-height: 0;
             opacity: 0;
             overflow: hidden;
@@ -154,18 +153,17 @@
             margin-top: 0;
         }
 
-        #gwContent.open {
+        #bdayContent.open {
             max-height: 600px;
             opacity: 1;
             margin-top: 15px;
         }
 
-        /* Scrollable Container for Original Get Well Message */
-        .gw-message-scroll {
+        .bday-message-scroll {
             max-height: 220px;
             overflow-y: auto;
             background: rgba(0, 0, 0, 0.3);
-            border-left: 3px solid var(--accent-rose);
+            border-left: 3px solid var(--accent-pink);
             padding: 16px;
             border-radius: 12px;
             font-size: 0.88rem;
@@ -173,24 +171,24 @@
             color: #f3e8ee;
             white-space: pre-line;
             scrollbar-width: thin;
-            scrollbar-color: var(--accent-rose) rgba(0, 0, 0, 0.2);
+            scrollbar-color: var(--accent-pink) rgba(0, 0, 0, 0.2);
         }
 
-        .gw-message-scroll::-webkit-scrollbar {
+        .bday-message-scroll::-webkit-scrollbar {
             width: 6px;
         }
 
-        .gw-message-scroll::-webkit-scrollbar-track {
+        .bday-message-scroll::-webkit-scrollbar-track {
             background: rgba(0, 0, 0, 0.2);
             border-radius: 10px;
         }
 
-        .gw-message-scroll::-webkit-scrollbar-thumb {
-            background: var(--accent-rose);
+        .bday-message-scroll::-webkit-scrollbar-thumb {
+            background: var(--accent-pink);
             border-radius: 10px;
         }
 
-        .hug-btn {
+        .wish-btn {
             display: block;
             width: 100%;
             margin-top: 15px;
@@ -205,11 +203,11 @@
             transition: background 0.3s ease;
         }
 
-        .hug-btn:hover {
+        .wish-btn:hover {
             background: rgba(247, 168, 202, 0.2);
         }
 
-        #hugAlert {
+        #wishAlert {
             display: none;
             margin-top: 10px;
             font-size: 0.8rem;
@@ -377,7 +375,7 @@
             transform: scale(1.05);
         }
 
-        /* Revealed Section Opening Animation */
+        /* Revealed Section Animation */
         #revealedSection {
             max-height: 0;
             opacity: 0;
@@ -402,7 +400,6 @@
             50% { transform: translateY(-6px); }
         }
 
-        /* Scrollable Container for Long Love Letter */
         .letter-content-scroll {
             max-height: 320px;
             overflow-y: auto;
@@ -447,10 +444,9 @@
 <body>
 
     <div class="wrapper">
-        <!-- Header -->
         <div class="header">
-            <div class="sub-tag">✦ Romantic Surprise ✦</div>
-            <h1 class="main-title">I Love You</h1>
+            <div class="sub-tag">✦ Romantic Birthday Surprise ✦</div>
+            <h1 class="main-title">Happy Birthday</h1>
             <div class="name">Samreen (Eya)</div>
 
             <div class="date-badge">
@@ -458,31 +454,29 @@
             </div>
         </div>
 
-        <!-- INTEGRATED SECTION: Get Well Soon Card with Scrollable Original Message -->
-        <div class="get-well-card">
-            <div class="rose-bouquet">🌹💐🌹</div>
-            <h2 class="get-well-title">Get Well Soon, My Love</h2>
-            <p class="get-well-sub">Sending a bouquet of red roses and all my warmth your way</p>
-            <button class="toggle-gw-btn" onclick="toggleGetWell()">Open Get Well Card 💌</button>
+        <div class="bday-card">
+            <div class="flower-bouquet">🌸💐🎂💐🌸</div>
+            <h2 class="bday-card-title">Happy Birthday, My Love!</h2>
+            <p class="bday-card-sub">Sending you a bouquet of fresh flowers and all my heart's warmth today</p>
+            <button class="toggle-bday-btn" onclick="toggleBirthdayCard()">Open Birthday Card 🎁</button>
             
-            <div id="gwContent">
-                <div class="gw-message-scroll">
-My dearest Samreen (Eya),
+            <div id="bdayContent">
+                <div class="bday-message-scroll">
+My Dearest Samreen (Eya),
 
-It breaks my heart seeing you not feeling well today. Days just aren't as bright without your smile and warm energy illuminating everything around.
+Happy Birthday to the girl who fills my life with endless joy and warmth! 🌸✨
 
-I’m sending you this bouquet of virtual red roses to remind you how deeply loved and cherished you are. Please rest up, drink plenty of fluids, and take extra good care of yourself today.
+I wish I could hand-deliver this bouquet of fresh, blossoming flowers to you today and see that beautiful smile in person. May your special day be as bright, sweet, and magnificent as you are.
 
-If you need anything at all—whether it's medicine, your favorite soup, or just someone to hold your hand—I'm right here for you. Wishing you the fastest and sweetest recovery!
+May this coming year bring you all the happiness, good health, and success you so deeply deserve. Never forget how incredibly loved and cherished you are every single day.
 
-Forever yours, ❤️
+Have the happiest birthday ever! 💖🎂🎉
                 </div>
-                <button class="hug-btn" onclick="sendVirtualCare()">Click for Extra Hugs & Kisses 🤗</button>
-                <div id="hugAlert">Giant warm hugs & extra kisses sent to Eya! 💖🌹</div>
+                <button class="wish-btn" onclick="sendVirtualWish()">Send Birthday Wishes & Hugs 🤗✨</button>
+                <div id="wishAlert">Warm birthday wishes, extra hugs & kisses sent to Eya! 💖🌸🎉</div>
             </div>
         </div>
 
-        <!-- 1. Relationship Counter -->
         <div class="counter-card">
             <div class="counter-title">♥ Together ♥</div>
             <div class="timer-grid">
@@ -513,7 +507,6 @@ Forever yours, ❤️
             </div>
         </div>
 
-        <!-- 2. Birthday Countdown (August 31st) -->
         <div class="counter-card">
             <div class="counter-title">🎂 Countdown to Her Birthday (Aug 31) 🎂</div>
             <div class="timer-grid-4">
@@ -536,44 +529,43 @@ Forever yours, ❤️
             </div>
         </div>
 
-        <!-- 3. Love Message Section -->
         <div class="message-card">
             <div class="msg-header">
                 <div class="heart-icon-bg">♥</div>
                 <div class="msg-titles">
-                    <span class="sub">Romantic Surprise</span>
-                    <span class="main">Love message</span>
+                    <span class="sub">Birthday Special</span>
+                    <span class="main">Love Letter</span>
                 </div>
             </div>
 
             <div class="divider"></div>
 
-            <!-- Direct Unlock View -->
             <div id="lockSection" class="lock-container">
                 <div class="lock-icon-bg">💌</div>
                 <div class="lock-text">
-                    I wrote a special message just for you...
+                    I wrote a special birthday love letter just for you...
                 </div>
                 <button class="unlock-btn" onclick="unlockLetter()">Open Love Letter ✉️</button>
             </div>
 
-            <!-- Revealed Content -->
             <div id="revealedSection">
                 <div class="sticker-container">
                     🧸💖✨
                 </div>
 
                 <div class="letter-content-scroll">
-                    <div class="salutation">My Love,</div>
-                    <div class="letter-text">Today is National Girlfriend Day, and even with all the miles stretching between us, you feel closer to me than anything else in this world.
+                    <div class="salutation">My Dearest Eya,</div>
+                    <div class="letter-text">Today is all about celebrating you—the most precious and irreplaceable person in my life. Happy Birthday, my love! 🌸✨
 
-We haven't had the chance to stand in the same room yet, but what we’ve built through our words, our calls, and our quiet moments together is as real and powerful as it gets. You’ve shown me that true love isn't defined by distance, but by how deeply two hearts choose to understand and hold onto each other.
+Even with all the miles stretching between us today, you feel closer to my heart than anything else in this world. We haven't had the chance to stand in the same room yet, but what we’ve built through our endless conversations, late-night calls, and shared dreams is as real, tender, and powerful as it gets.
 
-To be honest, my love for you isn't something that just stays the same—it grows with every single minute and every passing second. Every time I see your name pop up on my screen, every time I hear your voice, my heart instantly shifts toward you. You’ve become my absolute safe place, my constant thought, and the light in my everyday life.
+You’ve shown me that true love knows no distance. Every time I see your name light up my phone screen, every time I hear your voice, my heart instantly feels at home. You are my safe place, my sweetest thought, and the brightest part of my days.
 
-I cherish the mind you have, the kindness you show me, and the beautiful way we communicate. I count down the days until the distance is finally gone and I can say all of this to you in person. But until then, please know that across every mile, every time zone, and every moment of the day, I am completely in love with you.
+On your birthday, I want to thank you for choosing me, for believing in us, and for bringing so much light into my life. I count down the days until the distance between us vanishes and I can celebrate you in person, hold your hands, and tell you all of this face to face.
 
-Thank you for choosing me, for listening to me, and for being the best part of my life.</div>
+Until then, please know that across every single mile, I am celebrating you today with all my heart. May your day be filled with flowers, smiles, and all the love in the world.
+
+Happy Birthday, Jaan. I love you endlessly. ❤️</div>
                 </div>
             </div>
 
@@ -581,38 +573,54 @@ Thank you for choosing me, for listening to me, and for being the best part of m
     </div>
 
     <script>
-        // Get Well Toggle
-        function toggleGetWell() {
-            const content = document.getElementById('gwContent');
+        // Birthday Card Toggle
+        function toggleBirthdayCard() {
+            const content = document.getElementById('bdayContent');
             content.classList.toggle('open');
         }
 
-        function sendVirtualCare() {
-            document.getElementById('hugAlert').style.display = 'block';
+        function sendVirtualWish() {
+            document.getElementById('wishAlert').style.display = 'block';
         }
 
         // Timers Logic
-        const startDate = new Date("2025-02-13T00:00:00"); 
+        const startDate = new Date(2025, 1, 13, 0, 0, 0); // Month is 0-indexed (1 = Feb)
 
         function updateCounter() {
             const now = new Date();
-            
-            let years = now.getFullYear() - startDate.getFullYear();
-            let months = now.getMonth() - startDate.getMonth();
-            let days = now.getDate() - startDate.getDate();
+
+            let targetYear = startDate.getFullYear();
+            let targetMonth = startDate.getMonth();
+            let targetDate = startDate.getDate();
+
+            let years = now.getFullYear() - targetYear;
+            let months = now.getMonth() - targetMonth;
+            let days = now.getDate() - targetDate;
             let hours = now.getHours() - startDate.getHours();
             let minutes = now.getMinutes() - startDate.getMinutes();
             let seconds = now.getSeconds() - startDate.getSeconds();
 
-            if (seconds < 0) { seconds += 60; minutes--; }
-            if (minutes < 0) { minutes += 60; hours--; }
-            if (hours < 0) { hours += 24; days--; }
+            if (seconds < 0) {
+                seconds += 60;
+                minutes--;
+            }
+            if (minutes < 0) {
+                minutes += 60;
+                hours--;
+            }
+            if (hours < 0) {
+                hours += 24;
+                days--;
+            }
             if (days < 0) {
                 const prevMonth = new Date(now.getFullYear(), now.getMonth(), 0);
                 days += prevMonth.getDate();
                 months--;
             }
-            if (months < 0) { months += 12; years--; }
+            if (months < 0) {
+                months += 12;
+                years--;
+            }
 
             document.getElementById('years').innerText = String(years).padStart(2, '0');
             document.getElementById('months').innerText = String(months).padStart(2, '0');
@@ -626,6 +634,7 @@ Thank you for choosing me, for listening to me, and for being the best part of m
             const now = new Date();
             let currentYear = now.getFullYear();
             
+            // Birthday: August 31st (Month index 7)
             let nextBirthday = new Date(currentYear, 7, 31, 0, 0, 0);
 
             if (now > nextBirthday) {
