@@ -42,7 +42,6 @@
             padding-bottom: 40px;
         }
 
-        /* Header Section */
         .header {
             text-align: center;
             margin-top: 30px;
@@ -90,7 +89,6 @@
             color: var(--text-sub);
         }
 
-        /* Birthday Celebration Card */
         .bday-card {
             background: linear-gradient(135deg, rgba(247, 168, 202, 0.25) 0%, rgba(216, 105, 151, 0.1) 100%);
             border: 1px solid rgba(247, 168, 202, 0.35);
@@ -216,7 +214,6 @@
             font-weight: 500;
         }
 
-        /* Counter Cards */
         .counter-card {
             background: var(--card-bg);
             border: 1px solid var(--card-border);
@@ -273,13 +270,13 @@
             display: block;
         }
 
-        /* Message Card */
         .message-card {
             background: var(--card-bg);
             border: 1px solid var(--card-border);
             border-radius: 20px;
             padding: 22px;
             backdrop-filter: blur(10px);
+            margin-bottom: 20px;
         }
 
         .msg-header {
@@ -320,7 +317,6 @@
             margin-bottom: 20px;
         }
 
-        /* Lock / Trigger Container */
         .lock-container {
             background: rgba(0, 0, 0, 0.35);
             border: 1px solid rgba(255, 255, 255, 0.08);
@@ -375,7 +371,6 @@
             transform: scale(1.05);
         }
 
-        /* Revealed Section Animation */
         #revealedSection {
             max-height: 0;
             opacity: 0;
@@ -438,6 +433,34 @@
             font-size: 1.15rem;
             margin-bottom: 12px;
             color: #fff;
+        }
+
+        .nav-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            padding: 20px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-btn {
+            display: inline-block;
+            width: 100%;
+            background: linear-gradient(135deg, #f7a8ca 0%, #d86997 100%);
+            color: #17041f;
+            font-weight: 600;
+            padding: 14px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 15px rgba(247, 168, 202, 0.25);
+        }
+
+        .nav-btn:hover {
+            transform: scale(1.03);
+            box-shadow: 0 6px 20px rgba(247, 168, 202, 0.35);
         }
     </style>
 </head>
@@ -568,12 +591,16 @@ Until then, please know that across every single mile, I am celebrating you toda
 Happy Birthday, Jaan. I love you endlessly. ❤️</div>
                 </div>
             </div>
-
         </div>
+
+        <!-- Navigation Button to Birthday Book -->
+        <div class="nav-card">
+            <a href="birthday.html" class="nav-btn">Open Birthday Book 📖✨</a>
+        </div>
+
     </div>
 
     <script>
-        // Birthday Card Toggle
         function toggleBirthdayCard() {
             const content = document.getElementById('bdayContent');
             content.classList.toggle('open');
@@ -583,8 +610,7 @@ Happy Birthday, Jaan. I love you endlessly. ❤️</div>
             document.getElementById('wishAlert').style.display = 'block';
         }
 
-        // Timers Logic
-        const startDate = new Date(2025, 1, 13, 0, 0, 0); // Month is 0-indexed (1 = Feb)
+        const startDate = new Date(2025, 1, 13, 0, 0, 0);
 
         function updateCounter() {
             const now = new Date();
@@ -633,8 +659,6 @@ Happy Birthday, Jaan. I love you endlessly. ❤️</div>
         function updateBirthdayCountdown() {
             const now = new Date();
             let currentYear = now.getFullYear();
-            
-            // Birthday: August 31st (Month index 7)
             let nextBirthday = new Date(currentYear, 7, 31, 0, 0, 0);
 
             if (now > nextBirthday) {
@@ -662,7 +686,6 @@ Happy Birthday, Jaan. I love you endlessly. ❤️</div>
         updateCounter();
         updateBirthdayCountdown();
 
-        // Unlock Logic
         function unlockLetter() {
             const lockSec = document.getElementById('lockSection');
             const revealSec = document.getElementById('revealedSection');
